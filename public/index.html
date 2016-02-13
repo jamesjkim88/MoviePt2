@@ -14,38 +14,34 @@
             float: left
         }
 
+        img[alt="No Image"]{
+            width: 75px;
+            height: 75px;
+        }
+
     </style>
 </head>
 <body>
-<div ng-controller="mainCtrl">
-    <ol>
-        <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
-    </ol>
-    <ol>
-        <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
-    </ol>
-    <ol>
-        <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
-    </ol>
-    <ol>
-        <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
-    </ol>
-</div>
+    <div ng-controller="mainCtrl">
+        <h1>{{title}}</h1>
+        <ol ng-controller="top5Ctrl">
+            top5
+            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        </ol>
+        <ol ng-controller="top5critics">
+            top5 critic picks
+            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        </ol>
+        <ol ng-controller="top5dvd">
+            top 5 dvd
+            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt="No Image"> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        </ol>
+        <ol ng-controller="top5nytop">
+            top5 ny picks
+            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        </ol>
+    </div>
 <script src="bower_components/angular/angular.js"></script>
-<script>
-
-    var app = angular.module("app", []);
-
-    app.controller("mainCtrl", function($scope, $http){
-        $http.get("/movies").then(function(config){
-            console.log("data", config.data)
-            $scope.results = config.data.results;
-            console.log($scope.results);
-        }, function(config){
-            console.log("error: ", config);
-        })
-    })
-
-</script>
+<script src="app/app.js"></script>
 </body>
 </html>
