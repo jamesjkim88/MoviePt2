@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/movies", function(req, res){
-  getData("https://api.myjson.com/bins/2oofe", function(err,result){
+  getData("http://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key=7d56016af89a3bbbc31a762e9e198b78%3A19%3A72545161", function(err,result){
     if(err) res.status(500).json(err);
     else res.status(200).json(result);
   });
