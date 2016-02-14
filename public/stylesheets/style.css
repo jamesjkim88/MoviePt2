@@ -1,8 +1,16 @@
+/********
+UNIVERSAL
+********/
+
+*{
+  box-sizing: border-box;
+}
+
 html,body{
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #eee
+  background-color: #DCDCDC;
 }
 
 li{
@@ -30,9 +38,34 @@ img[alt="No Image"]{
 }
 
 .bg-color{
-  background-color: white;
+  background-color: #F5F5F5;
 }
 
+h3{
+  font-family: "Josefin Sans";
+}
+
+.text{
+  font-family: "raleway";
+}
+
+span.border-bottom{
+  border-bottom: 0px solid transparent;
+  transition: border-bottom, 500ms, ease;
+  cursor: pointer;
+}
+
+span.border-bottom:hover{
+  border-bottom: 1px solid #333;
+}
+
+.push-down{
+  margin-top: 25px;
+}
+
+#last-row{
+  margin-bottom: 25px;
+}
 
 /********
 NAV-BAR
@@ -46,17 +79,16 @@ NAV-BAR
   background: #ef6c00;
 }
 
+.top-bar .name h1{
+  line-height: 30px;
+}
 
 .top-bar-section .has-form{
   background: #de8642;
 }
 
-.name h1{
+.name h1 a{
   font-family: "Poiret One";
-  font-size: 1.5em;
-}
-
-.top-bar .name h1{
   font-size: 1.5em;
 }
 
@@ -67,6 +99,7 @@ NAV-BAR
 input[type="text"]{
   margin: 0 10em 1rem 0;
 }
+
 
 /********
 HEADER
@@ -114,6 +147,26 @@ HEADER
   padding-left: 15px;
 }
 
+/*******************
+  TOP 5 and Articles
+*******************/
+
+.bot-art{
+  padding-top: 15px;
+}
+
+.moviedesc{
+  color: #333;
+  font-size: 14px;
+  font-family: "raleway"
+}
+
+/*.moviedesc{*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*}*/
+
+
 /********
 FOOTER
 ********/
@@ -150,27 +203,28 @@ footer p{
   margin: 0;
 }
 
+.social-media li{
+  padding: 10px 10px;
+  transition: background-color 750ms ease;
+}
+
 .social-media a{
   color: white;
 }
 
-.social-media a:hover{
-  padding: 10px 10px;
-}
-
-#facebook a:hover{
+#facebook:hover{
   background-color: #3b5998;
 }
 
-#instagram a:hover{
+#instagram:hover{
   background-color: #3f729b;
 }
 
-#tumblr a:hover{
+#tumblr:hover{
   background-color: #35465c;
 }
 
-#twitter a:hover{
+#twitter:hover{
   background-color: #55acee;
 }
 
@@ -184,13 +238,7 @@ footer p{
   margin-left: 10%;
 }
 
-.moviedesc{
-  color: #333;
-  font-size: 14px;
-  width: 60%;
-  float: right;
-  margin: 0;
-}
+
 
 /********
 MEDIA-QUERIES
