@@ -4,68 +4,147 @@
     <meta charset="UTF-8">
     <title>MovieRevU</title>
     <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
-    <!--<link rel="stylesheet" href="bower_components/normalize-css/normalize.css">-->
-    <style>
-
-        li{
-            list-style: none;
-        }
-
-        ol{
-            float: left
-        }
-
-        img[alt="No Image"]{
-            width: 75px;
-            height: 75px;
-        }
-
-        .clearfix:after {
-            visibility: hidden;
-            display: block;
-            font-size: 0;
-            content: " ";
-            clear: both;
-            height: 0;
-        }
-
-    </style>
+    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700|Poiret+One|Bitter:400,700|Montserrat:400,700|Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body ng-controller="mainCtrl">
+
 <!-- NAV BAR -->
-    <header>
-        <h1>{{title}}</h1>
-        <nav>
-            <ul>
-                <li></li>
+<div class="contain-to-grid fixed nav-bar">
+    <nav class="top-bar" data-topbar role = "navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1>
+                    <a href="#">{{title}}</a>
+                </h1>
+            </li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="right" id = "nav-links">
+                <li class="has-form">
+                    <div class="row collapse">
+                        <div class="large-8 small-8 columns">
+                            <input type="text" class = "value" placeholder="Look for Movies">
+                        </div>
+                        <div class="large-4 small-3 columns">
+                            <a href="#" class="alert button expand">Search</a>
+                        </div>
+                    </div>
+                </li>
             </ul>
-        </nav>
-    </header>
+        </section>
+    </nav>
+</div>
+
+<div class = "row orbit-row">
+    <div class = "small-12 columns" data-orbit data-options="pause_on_hover:false; timer_speed:5000; animation_speed: 800;">
+        <div>
+            <div class = "caption"><p>I am Chris Farley</p></div>
+            <div class="push-1 buttons">
+                <ul class="button-group">
+                    <li><a href="#" class="small button success radius hide-for-small">View Trailer</a></li>
+                    <li><a href="#" class="small button success radius hide-for-small">Read Reviews</a></li>
+                </ul>
+            </div>
+            <div class = "orbit-img">
+                <img src="http://www.worldlifestyle.com/wp-content/uploads/2015/09/chris-farley.jpg" alt="Chris Farley">
+            </div>
+        </div>
+        <div>
+            <div class = "caption"><p>The End of Tour</p></div>
+            <div class="push-1 buttons">
+                <ul class="button-group">
+                    <li><a href="#" class="small button success radius hide-for-small">View Trailer</a></li>
+                    <li><a href="#" class="small button success radius hide-for-small">Read Reviews</a></li>
+                </ul>
+            </div>
+            <div class = "orbit-img">
+                <img src="http://static01.nyt.com/images/2015/07/31/arts/31ENDTOUR/31ENDTOUR-superJumbo-v4.jpg">
+            </div>
+
+        </div>
+        <div>
+            <div class = "caption"><p>Vacation</p></div>
+            <div class="push-1 buttons">
+                <ul class="button-group">
+                    <li><a href="#" class="small button success radius hide-for-small">View Trailer</a></li>
+                    <li><a href="#" class="small button success radius hide-for-small">Read Reviews</a></li>
+                </ul>
+            </div>
+            <div class = "orbit-img">
+                <img src = "http://static01.nyt.com/images/2015/07/29/arts/29VACATION/29VACATION-superJumbo.jpg">
+            </div>
+        </div>
+        <div>
+            <div class = "caption"><p>Mission: Impossible - Rougue Nation</p></div>
+            <div class="push-1 buttons">
+                <ul class="button-group">
+                    <li><a href="#" class="small button success radius hide-for-small">View Trailer</a></li>
+                    <li><a href="#" class="small button success radius hide-for-small">Read Reviews</a></li>
+                </ul>
+            </div>
+            <div class = "orbit-img">
+                <img src = "http://bocamag.com/site_media/uploads/August%202015/mission-impossible-rogue-nation-motorcycle-explosion_1920.0-e1433808025568.jpg">
+            </div>
+
+        </div>
+        <div>
+            <div class = "caption" id = "not-released"><p>Straight Outta Compton <br/> Coming Out: Aug 14, 2015</p></div>
+            <div class="push-1 buttons">
+                <ul class="button-group">
+                    <li><a href="#" class="small button success radius hide-for-small">View Trailer</a></li>
+                    <li><a href="#" class="small button success radius hide-for-small">Read Reviews</a></li>
+                </ul>
+            </div>
+            <div class = "orbit-img">
+                <img src = "http://cdn.indiewire.com/dims4/INDIEWIRE/c2ae34d/2147483647/thumbnail/680x478/quality/75/?url=http%3A%2F%2Fd1oi7t5trwfj5d.cloudfront.net%2F07%2F70%2F50bdd8d94effa97529026210bcb1%2Fnwa-straight-outta-compton.JPG">
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- FIRST ROW TOP 5 -->
-    <div class="clearfix">
-        <ol ng-controller="mainCallCtrl">
-            <li><h2>top5</h2></li>
-            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
+    <div class="clearfix row  bg-color">
+        <ol ng-controller="mainCallCtrl" class="medium-3 columns">
+            <li><h3>top5</h3></li>
+            <li ng-repeat="result in results | limitTo: 5">
+                <img ng-src={{result.multimedia.resource.src}} alt="">
+                <span class="moviedesc">{{result.display_title}}
+                </span>
+            </li>
         </ol>
-        <ol ng-controller="top5critics">
-            <li><h2>top5 critic picks</h2></li>
-            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        <ol ng-controller="top5critics" class="medium-3 columns">
+            <li><h3>top5 critic picks</h3></li>
+            <li ng-repeat="result in results | limitTo: 5">
+                <img ng-src={{result.multimedia.resource.src}} alt="">
+                <span class="moviedesc">{{result.display_title}}
+                </span>
+            </li>
         </ol>
-        <ol ng-controller="top5dvd">
-            <li><h2>top 5 dvd</h2></li>
-            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt="No Image"> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        <ol ng-controller="top5dvd" class="medium-3 columns">
+            <li><h3>top 5 dvd</h3></li>
+            <li ng-repeat="result in results | limitTo: 5">
+                <img ng-src={{result.multimedia.resource.src}} alt="No Image">
+                <span class="moviedesc">
+                    {{result.display_title}}
+                </span>
+            </li>
         </ol>
-        <ol ng-controller="top5nytop">
-            <li><h2>top5 ny picks</h2></li>
-            <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        <ol ng-controller="top5nytop" class="medium-3 columns">
+            <li><h3>top5 ny picks</h3></li>
+            <li ng-repeat="result in results | limitTo: 5">
+                <img ng-src={{result.multimedia.resource.src}} alt="">
+                <span class="moviedesc">{{result.display_title}}
+                </span>
+            </li>
         </ol>
     </div>
 
 <!-- ARTICLES -->
 
-    <div class="article-container">
-        <article class="article" ng-controller="mainCallCtrl">
+    <div class="article-container row">
+        <article class="article large-4 medium-4 columns" ng-controller="mainCallCtrl">
             <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
             <h3>{{results[random].headline}}</h3>
             <section>{{results[random].summary_short}}</section>
@@ -74,7 +153,7 @@
             <section>MPAA-Rating: {{results[random].mpaa_rating}}</section>
         </article>
 
-        <article class="article" ng-controller="mainCallCtrl">
+        <article class="article large-4 medium-4 columns" ng-controller="mainCallCtrl">
             <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
             <h3>{{results[random].headline}}</h3>
             <section>{{results[random].summary_short}}</section>
@@ -83,7 +162,7 @@
             <section>MPAA-Rating: {{results[random].mpaa_rating}}</section>
         </article>
 
-        <article class="article" ng-controller="mainCallCtrl">
+        <article class="article large-4 medium-4 columns" ng-controller="mainCallCtrl">
             <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
             <h3>{{results[random].headline}}</h3>
             <section>{{results[random].summary_short}}</section>
@@ -94,21 +173,56 @@
     </div>
 
 <!-- LAST ROW TOP 5-->
-    <div>
-        <ol ng-controller="top5random">
+    <div class="row bg-color">
+        <ol ng-controller="top5random" class="large-4 medium-4 columns">
             <li><h3>What to watch at Home...?</h3></li>
             <li ng-repeat="result in results | limitTo: 5: random">{{result.display_title}}</li>
         </ol>
-        <ol ng-controller="top5criticNy">
+        <ol ng-controller="top5criticNy" class="large-4 medium-4 columns">
             <li><h3>Critically Acclaimed Films</h3></li>
             <li ng-repeat="result in results | limitTo: 5: random">{{result.display_title}}</li>
         </ol>
-        <ol ng-controller="top5randomreviewers">
+        <ol ng-controller="top5randomreviewers" class="large-4 medium-4 columns">
             <li><h3>Critically Acclaimed Films</h3></li>
             <li ng-repeat="result in results | limitTo: 5: random">{{result.display_name}}</li>
         </ol>
     </div>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class = "row">
+        <div class = "large-3 columns about-us">
+            <h5>About MovieRev'u</h5>
+            <p>Movie Rev'u is here to provide you reviews of the Movies you desire to search. You can search by typing in the Movie, Published Date, Actor/Actress, Director, and more.  You can also catch up on reading the latest reviews on movies that are out Theatre and or DVD/Blu-Ray!</p>
+
+        </div>
+        <div class = "large-6 push-1 columns social-media">
+            <ul>
+                <li id = "facebook"><a href = "#">Facebook<a></li>
+                <li id = "instagram"><a href = "#">Instagram<a></li>
+                <li id = "twitter"><a href = "#">Twitter<a></li>
+                <li id = "tumblr"><a href = "#">Tumblr<a></li>
+            </ul>
+        </div>
+        <div class = "large-3 columns power-up">
+            <h5>Powered by NyTimes Movie Review API<h5>
+        </div>
+    </div>
+    </div>
+
+</footer>
+
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/foundation/js/foundation.min.js"></script>
+<script src="bower_components/foundation/js/foundation/foundation.orbit.js"></script>
+
 <script src="bower_components/angular/angular.js"></script>
 <script src="app/app.js"></script>
+<script>
+    $(document).foundation();
+</script>
+
 </body>
 </html>

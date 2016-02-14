@@ -1,8 +1,235 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html,body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #eee
 }
 
-a {
-  color: #00B7FF;
+li{
+  list-style: none;
+  padding: 5px 0;
+}
+
+ol{
+  margin: 0;
+  padding: 0;
+}
+
+img[alt="No Image"]{
+  width: 75px;
+  height: 75px;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.bg-color{
+  background-color: white;
+}
+
+
+/********
+NAV-BAR
+********/
+
+.nav-bar{
+  background: #ef6c00;
+}
+
+.top-bar{
+  background: #ef6c00;
+}
+
+
+.top-bar-section .has-form{
+  background: #de8642;
+}
+
+.name h1{
+  font-family: "Poiret One";
+  font-size: 1.5em;
+}
+
+.top-bar .name h1{
+  font-size: 1.5em;
+}
+
+.has-form{
+  padding-right: 30px;
+}
+
+input[type="text"]{
+  margin: 0 10em 1rem 0;
+}
+
+/********
+HEADER
+********/
+
+.orbit-row{
+  max-height: 300px;
+}
+
+.orbit-container{
+  max-height: 300px;
+}
+
+.orbit-img img{
+  height: 300px;
+  width: 100%;
+}
+
+.orbit-img{
+  max-height: 300px;
+}
+
+.buttons{
+  position: absolute;
+  margin-top: 20%;
+}
+
+.orbit-slide-number{
+  display: none;
+}
+
+.caption{
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  height: 30px;
+  padding-right: 15px;
+  position: absolute;
+}
+
+#not-released{
+  height: 60px;
+}
+
+.caption p{
+  padding-left: 15px;
+}
+
+/********
+FOOTER
+********/
+
+footer{
+  background-color: #333;
+  text-align: center;
+}
+
+footer h5{
+  color: #fff;
+}
+
+footer p{
+  color: #fff;
+  font-size: 14px;
+}
+
+.social-media{
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  margin-top: 45px;
+  padding-top: 4%;
+  padding-bottom: 6%;
+  width: 40%;
+}
+
+.social-media ul li{
+  color: white;
+  display: inline-block;
+}
+
+.social-media ul{
+  margin: 0;
+}
+
+.social-media a{
+  color: white;
+}
+
+.social-media a:hover{
+  padding: 10px 10px;
+}
+
+#facebook a:hover{
+  background-color: #3b5998;
+}
+
+#instagram a:hover{
+  background-color: #3f729b;
+}
+
+#tumblr a:hover{
+  background-color: #35465c;
+}
+
+#twitter a:hover{
+  background-color: #55acee;
+}
+
+.about-us{
+  padding: 2% 0;
+
+}
+
+.power-up{
+  padding: 5% 0;
+  margin-left: 10%;
+}
+
+.moviedesc{
+  color: #333;
+  font-size: 14px;
+  width: 60%;
+  float: right;
+  margin: 0;
+}
+
+/********
+MEDIA-QUERIES
+********/
+
+@media(max-width: 1024px){
+  .social-media{
+    border: none;
+    margin-left: 22%;
+  }
+  .power-up{
+    margin: 0;
+  }
+}
+
+@media(max-width: 974px){
+  .moviedesc{
+    float: none;
+  }
+}
+
+@media(max-width: 640px){
+  .social-media{
+    margin-left: 30%;
+  }
+  .moviedesc{
+    float: right;
+    margin-right: 25%;
+  }
+}
+
+@media(max-width: 576px){
+  .moviedesc{
+    margin-right: 90px;
+  }
+}
+
+@media(max-width: 477px){
+  .moviedesc{
+    margin-right: 20px;
+  }
 }
