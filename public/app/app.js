@@ -1,19 +1,20 @@
 /*
  Things to get done:
  overall, better angular code por favor.
- angular service for each api calls? or think of something better.
+ angular code seems repetitive
  UI design
  */
 
 var app = angular.module("app", []);
 
-app.controller("mainCtrl", function(top5, $scope){
+app.controller("mainCtrl", function($scope){
     $scope.title = "MovieRev'U"
 });
 
-app.controller("top5Ctrl", function(top5, $scope){
-    top5.get().then(function(config){
+app.controller("mainCallCtrl", function(mainCall, $scope){
+    mainCall.get().then(function(config){
         $scope.results = config.data.results;
+        $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function(config){
         console.log("error: ", config);
     });
@@ -44,9 +45,10 @@ app.controller("top5nytop", function(top5nytop, $scope){
     });
 });
 
-app.controller("top5classics", function(top5classics, $scope){
-    top5classics.get().then(function(config){
+app.controller("top5criticNy", function(top5criticNy, $scope){
+    top5criticNy.get().then(function(config){
         $scope.results = config.data.results;
+        $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function(config){
         console.log("error: ", config);
     });
@@ -55,6 +57,7 @@ app.controller("top5classics", function(top5classics, $scope){
 app.controller("top5random", function(top5random, $scope){
     top5random.get().then(function(config){
         $scope.results = config.data.results;
+        $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function(config){
         console.log("error: ", config);
     });
@@ -63,6 +66,7 @@ app.controller("top5random", function(top5random, $scope){
 app.controller("top5randomreviewers", function(top5randomreviewers, $scope){
     top5randomreviewers.get().then(function(config){
         $scope.results = config.data.results;
+        $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function(config){
         console.log("error: ", config);
     });
@@ -70,9 +74,9 @@ app.controller("top5randomreviewers", function(top5randomreviewers, $scope){
 
 /*****************
  Angular Factories
- ****************/
+*****************/
 
-app.factory("top5", function($http){
+app.factory("mainCall", function($http){
     return {
         get: function(){
             return $http.get("/movies");
@@ -104,10 +108,10 @@ app.factory("top5nytop", function($http){
     }
 });
 
-app.factory("top5classics", function($http){
+app.factory("top5criticNy", function($http){
     return {
         get: function(){
-            return $http.get("/classics");
+            return $http.get("/randomCriticNy");
         }
     }
 });
