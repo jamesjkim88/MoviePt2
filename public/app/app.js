@@ -63,14 +63,16 @@ app.controller("top5random", function(top5random, $scope){
     });
 });
 
-app.controller("top5randomreviewers", function(top5randomreviewers, $scope){
-    top5randomreviewers.get().then(function(config){
+app.controller("top5randomReviewers", function(top5randomReviewers, $scope){
+    top5randomReviewers.get().then(function(config){
         $scope.results = config.data.results;
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function(config){
         console.log("error: ", config);
     });
 });
+
+
 
 /*****************
  Angular Factories
@@ -124,7 +126,7 @@ app.factory("top5random", function($http){
     }
 });
 
-app.factory("top5randomreviewers", function($http){
+app.factory("top5randomReviewers", function($http){
     return {
         get: function(){
             return $http.get("/reviewers");
