@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>MovieRevU</title>
-    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css">
+    <!--<link rel="stylesheet" href="bower_components/normalize-css/normalize.css">-->
     <style>
 
         li{
@@ -19,26 +20,92 @@
             height: 75px;
         }
 
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
     </style>
 </head>
-<body>
-    <div ng-controller="mainCtrl">
+<body ng-controller="mainCtrl">
+<!-- NAV BAR -->
+    <header>
         <h1>{{title}}</h1>
-        <ol ng-controller="top5Ctrl">
-            top5
+        <nav>
+            <ul>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- FIRST ROW TOP 5 -->
+    <div class="clearfix">
+        <ol ng-controller="mainCallCtrl">
+            <li><h2>top5</h2></li>
             <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
         </ol>
         <ol ng-controller="top5critics">
-            top5 critic picks
+            <li><h2>top5 critic picks</h2></li>
             <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
         </ol>
         <ol ng-controller="top5dvd">
-            top 5 dvd
+            <li><h2>top 5 dvd</h2></li>
             <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt="No Image"> <span style="display: inline-block;">{{result.display_title}}</span></li>
         </ol>
         <ol ng-controller="top5nytop">
-            top5 ny picks
+            <li><h2>top5 ny picks</h2></li>
             <li ng-repeat="result in results | limitTo: 5"><img ng-src={{result.multimedia.resource.src}} alt=""> <span style="display: inline-block;">{{result.display_title}}</span></li>
+        </ol>
+    </div>
+
+<!-- ARTICLES -->
+
+    <div class="article-container">
+        <article class="article" ng-controller="mainCallCtrl">
+            <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
+            <h3>{{results[random].headline}}</h3>
+            <section>{{results[random].summary_short}}</section>
+            <section>{{results[random].sort_name}}</section>
+            <section>Opening Date: {{results[random].opening_date}}</section>
+            <section>MPAA-Rating: {{results[random].mpaa_rating}}</section>
+        </article>
+
+        <article class="article" ng-controller="mainCallCtrl">
+            <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
+            <h3>{{results[random].headline}}</h3>
+            <section>{{results[random].summary_short}}</section>
+            <section>{{results[random].sort_name}}</section>
+            <section>Opening Date: {{results[random].opening_date}}</section>
+            <section>MPAA-Rating: {{results[random].mpaa_rating}}</section>
+        </article>
+
+        <article class="article" ng-controller="mainCallCtrl">
+            <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
+            <h3>{{results[random].headline}}</h3>
+            <section>{{results[random].summary_short}}</section>
+            <section>{{results[random].sort_name}}</section>
+            <section>Opening Date: {{results[random].opening_date}}</section>
+            <section>MPAA-Rating: {{results[random].mpaa_rating}}</section>
+        </article>
+    </div>
+
+<!-- LAST ROW TOP 5-->
+    <div>
+        <ol ng-controller="top5random">
+            <li><h3>What to watch at Home...?</h3></li>
+            <li ng-repeat="result in results | limitTo: 5: random">{{result.display_title}}</li>
+        </ol>
+        <ol ng-controller="top5criticNy">
+            <li><h3>Critically Acclaimed Films</h3></li>
+            <li ng-repeat="result in results | limitTo: 5: random">{{result.display_title}}</li>
+        </ol>
+        <ol ng-controller="top5randomreviewers">
+            <li><h3>Critically Acclaimed Films</h3></li>
+            <li ng-repeat="result in results | limitTo: 5: random">{{result.display_name}}</li>
         </ol>
     </div>
 <script src="bower_components/angular/angular.js"></script>
