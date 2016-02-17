@@ -14,10 +14,6 @@ app.controller("mainCallCtrl", function($scope, http){
     })
 });
 
-/*
-make rest of controller code like one on top
- */
-
 app.controller("top5critics", function($scope, http) {
     http.get("/critics").then(function (config) {
         $scope.results = config.results;
@@ -77,7 +73,6 @@ app.controller("top5randomReviewers", function(http, $scope){
         console.log("error: ", config);
     });
 });
-
 
 
 /*****************
