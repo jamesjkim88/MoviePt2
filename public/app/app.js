@@ -7,7 +7,6 @@ app.controller("mainCtrl", function($scope){
 app.controller("mainCallCtrl", function($scope, http){
     http.get("/movies").then(function(config){
         $scope.results = config.results;
-        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function(config){
         console.log("error: " , config);
@@ -17,7 +16,6 @@ app.controller("mainCallCtrl", function($scope, http){
 app.controller("top5critics", function($scope, http) {
     http.get("/critics").then(function (config) {
         $scope.results = config.results;
-        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function (config) {
         console.log("error: ", config);
@@ -27,7 +25,6 @@ app.controller("top5critics", function($scope, http) {
 app.controller("top5dvd", function(http, $scope){
     http.get("/dvd").then(function (config) {
         $scope.results = config.results;
-        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function (config) {
         console.log("error: ", config);
@@ -37,7 +34,6 @@ app.controller("top5dvd", function(http, $scope){
 app.controller("top5nytop", function(http, $scope){
     http.get("/nytop").then(function (config) {
         $scope.results = config.results;
-        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function (config) {
         console.log("error: ", config);
@@ -47,7 +43,6 @@ app.controller("top5nytop", function(http, $scope){
 app.controller("top5criticNy", function(http, $scope){
     http.get("/randomCriticNy").then(function (config) {
         $scope.results = config.results;
-        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function (config) {
         console.log("error: ", config);
@@ -57,7 +52,6 @@ app.controller("top5criticNy", function(http, $scope){
 app.controller("top5random", function(http, $scope){
     http.get("/random").then(function (config) {
         $scope.results = config.results;
-        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function (config) {
         console.log("error: ", config);
@@ -67,7 +61,6 @@ app.controller("top5random", function(http, $scope){
 app.controller("top5randomReviewers", function(http, $scope){
     http.get("/reviewers").then(function (config) {
         $scope.results = config.results;
-        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function (config) {
         console.log("error: ", config);
@@ -90,7 +83,6 @@ app.factory("http", function($q){
                     if(xhr.readyState === 4){
                         if(xhr.status === 200){
                             var obj = JSON.parse(xhr.responseText);
-                            console.log("successful call", obj);
                             resolve(obj);
                         }else{
                             reject(xhr);
