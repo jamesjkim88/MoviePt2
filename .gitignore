@@ -1,4 +1,3 @@
-.idea
-node_modules
-routes
-Procfile
+.idea/
+node_modules/
+routes/
