@@ -1,73 +1,79 @@
-/*
- Things to get done:
- overall, better angular code por favor.
- angular code seems repetitive
- UI design
- */
-
 var app = angular.module("app", []);
 
 app.controller("mainCtrl", function($scope){
     $scope.title = "MovieRev'U"
 });
 
-app.controller("mainCallCtrl", function(mainCall, $scope){
-    mainCall.get().then(function(config){
-        $scope.results = config.data.results;
+app.controller("mainCallCtrl", function($scope, http){
+    http.get("/movies").then(function(config){
+        $scope.results = config.results;
+        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
     }, function(config){
-        console.log("error: ", config);
-    });
+        console.log("error: " , config);
+    })
 });
 
-app.controller("top5critics", function(top5critics, $scope){
-    top5critics.get().then(function(config){
-        $scope.results = config.data.results;
-    }, function(config){
-        console.log("error: ", config);
-    });
-});
+/*
+make rest of controller code like one on top
+ */
 
-app.controller("top5dvd", function(top5dvd, $scope){
-    top5dvd.get().then(function(config){
-        $scope.results = config.data.results;
-        console.log($scope.results)
-    }, function(config){
-        console.log("error: ", config);
-    });
-});
-
-app.controller("top5nytop", function(top5nytop, $scope){
-    top5nytop.get().then(function(config){
-        $scope.results = config.data.results;
-    }, function(config){
-        console.log("error: ", config);
-    });
-});
-
-app.controller("top5criticNy", function(top5criticNy, $scope){
-    top5criticNy.get().then(function(config){
-        $scope.results = config.data.results;
+app.controller("top5critics", function($scope, http) {
+    http.get("/critics").then(function (config) {
+        $scope.results = config.results;
+        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
-    }, function(config){
+    }, function (config) {
         console.log("error: ", config);
     });
 });
 
-app.controller("top5random", function(top5random, $scope){
-    top5random.get().then(function(config){
-        $scope.results = config.data.results;
+app.controller("top5dvd", function(http, $scope){
+    http.get("/dvd").then(function (config) {
+        $scope.results = config.results;
+        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
-    }, function(config){
+    }, function (config) {
         console.log("error: ", config);
     });
 });
 
-app.controller("top5randomReviewers", function(top5randomReviewers, $scope){
-    top5randomReviewers.get().then(function(config){
-        $scope.results = config.data.results;
+app.controller("top5nytop", function(http, $scope){
+    http.get("/nytop").then(function (config) {
+        $scope.results = config.results;
+        console.log("$scope.data: ", $scope.data);
         $scope.random = Math.floor((Math.random() * 15) + 1);
-    }, function(config){
+    }, function (config) {
+        console.log("error: ", config);
+    });
+});
+
+app.controller("top5criticNy", function(http, $scope){
+    http.get("/randomCriticNy").then(function (config) {
+        $scope.results = config.results;
+        console.log("$scope.data: ", $scope.data);
+        $scope.random = Math.floor((Math.random() * 15) + 1);
+    }, function (config) {
+        console.log("error: ", config);
+    });
+});
+
+app.controller("top5random", function(http, $scope){
+    http.get("/random").then(function (config) {
+        $scope.results = config.results;
+        console.log("$scope.data: ", $scope.data);
+        $scope.random = Math.floor((Math.random() * 15) + 1);
+    }, function (config) {
+        console.log("error: ", config);
+    });
+});
+
+app.controller("top5randomReviewers", function(http, $scope){
+    http.get("/reviewers").then(function (config) {
+        $scope.results = config.results;
+        console.log("$scope.data: ", $scope.data);
+        $scope.random = Math.floor((Math.random() * 15) + 1);
+    }, function (config) {
         console.log("error: ", config);
     });
 });
@@ -75,61 +81,30 @@ app.controller("top5randomReviewers", function(top5randomReviewers, $scope){
 
 
 /*****************
- Angular Factories
+ Angular Factorie
 *****************/
 
-app.factory("mainCall", function($http){
+//go with having one factory
+app.factory("http", function($q){
     return {
-        get: function(){
-            return $http.get("/movies");
-        }
-    }
-});
+        get: function(url){
+            return $q(function(resolve,reject){
+                var xhr = new XMLHttpRequest();
+                xhr.open("get", url);
+                xhr.addEventListener("readystatechange", function(){
+                    if(xhr.readyState === 4){
+                        if(xhr.status === 200){
+                            var obj = JSON.parse(xhr.responseText);
+                            console.log("successful call", obj);
+                            resolve(obj);
+                        }else{
+                            reject(xhr);
+                        }
+                    }
+                });
+                xhr.send();
+            })
 
-app.factory("top5critics", function($http){
-    return {
-        get: function(){
-            return $http.get("/critics");
-        }
-    }
-});
-
-app.factory("top5dvd", function($http){
-    return {
-        get: function(){
-            return $http.get("/dvd");
-        }
-    }
-});
-
-app.factory("top5nytop", function($http){
-    return {
-        get: function(){
-            return $http.get("/nytop");
-        }
-    }
-});
-
-app.factory("top5criticNy", function($http){
-    return {
-        get: function(){
-            return $http.get("/randomCriticNy");
-        }
-    }
-});
-
-app.factory("top5random", function($http){
-    return {
-        get: function(){
-            return $http.get("/random");
-        }
-    }
-});
-
-app.factory("top5randomReviewers", function($http){
-    return {
-        get: function(){
-            return $http.get("/reviewers");
         }
     }
 });
