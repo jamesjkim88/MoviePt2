@@ -69,7 +69,7 @@ app.controller("top5randomReviewers", function(http, $scope){
 
 
 /*****************
- Angular Factorie
+ Angular Factory
 *****************/
 
 //go with having one factory
