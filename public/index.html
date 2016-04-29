@@ -109,7 +109,7 @@
         <ol ng-controller="mainCallCtrl" class="medium-3 columns">
             <li><h3>Top 5 Now</h3></li>
             <li ng-repeat="result in results | limitTo: 5">
-                <img class="image" ng-src={{result.multimedia.resource.src}} alt="">
+                <img class="image" ng-src={{result.multimedia.src}} alt="No Image">
                 <section><span class="moviedesc border-bottom">{{result.display_title}}</span></section>
                 <!--<p><span class="moviedesc border-bottom">{{result.display_title}}</span>-->
                 <!--</p>-->
@@ -118,7 +118,7 @@
         <ol ng-controller="top5critics" class="medium-3 columns">
             <li><h3>Top 5 Critic Picks</h3></li>
             <li ng-repeat="result in results | limitTo: 5">
-                <img ng-src={{result.multimedia.resource.src}} alt="">
+                <img ng-src={{result.multimedia.src}} alt="No Image">
                 <section><span class="moviedesc border-bottom">{{result.display_title}}</span></section>
                 <!--<p><span class="moviedesc border-bottom">{{result.display_title}}</span>-->
                 <!--</p>-->
@@ -127,7 +127,7 @@
         <ol ng-controller="top5dvd" class="medium-3 columns">
             <li><h3>Top 5 DVD/Blu-Ray</h3></li>
             <li ng-repeat="result in results | limitTo: 5">
-                <img ng-src={{result.multimedia.resource.src}} alt="No Image">
+                <img ng-src={{result.multimedia.src}} alt="No Image">
                 <section><span class="moviedesc border-bottom">{{result.display_title}}</span></section>
                 <!--<p><span class="moviedesc border-bottom">{{result.display_title}}</span>-->
                 <!--</p>-->
@@ -136,7 +136,7 @@
         <ol ng-controller="top5nytop" class="medium-3 columns">
             <li><h3>Top 5 NY Picks</h3></li>
             <li ng-repeat="result in results | limitTo: 5">
-                <img ng-src={{result.multimedia.resource.src}} alt="">
+                <img ng-src={{result.multimedia.src}} alt="No Image">
                 <section><span class="moviedesc border-bottom">{{result.display_title}}</span></section>
                 <!--<p><span class="moviedesc border-bottom">{{result.display_title}}</span>-->
                 <!--</p>-->
@@ -148,7 +148,7 @@
     <div class="article-container row push-down">
         <div class="large-6 medium-6 columns">
             <article ng-controller="mainCallCtrl">
-                <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
+                <div><img ng-src="{{results[random].multimedia.src}}" alt="No Image"></div>
                 <h3><span class="border-bottom">{{results[random].headline}}</span></h3>
                 <section class="text">{{results[random].summary_short}}</section>
                 <section class="text">{{results[random].sort_name}}</section>
@@ -157,7 +157,7 @@
             </article>
 
             <article class="bot-art" ng-controller="mainCallCtrl">
-                <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
+                <div><img ng-src="{{results[random].multimedia.src}}" alt="No Image"></div>
                 <h3><span class="border-bottom">{{results[random].headline}}</span></h3>
                 <section class="text">{{results[random].summary_short}}</section>
                 <section class="text">{{results[random].sort_name}}</section>
@@ -168,7 +168,7 @@
 
         <div class="large-6 medium-6 columns bottom-articles">
         <article ng-controller="mainCallCtrl">
-            <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
+            <div><img ng-src="{{results[random].multimedia.src}}" alt="No Image"></div>
             <h3><span class="border-bottom">{{results[random].headline}}</span></h3>
             <section class="text">{{results[random].summary_short}}</section>
             <section class="text">{{results[random].sort_name}}</section>
@@ -177,7 +177,7 @@
         </article>
 
         <article class="bot-art" ng-controller="mainCallCtrl">
-            <div><img ng-src="{{results[random].multimedia.resource.src}}" alt=""></div>
+            <div><img ng-src="{{results[random].multimedia.src}}" alt="No Image"></div>
             <h3><span class="border-bottom">{{results[random].headline}}</span></h3>
             <section class="text">{{results[random].summary_short}}</section>
             <section class="text">{{results[random].sort_name}}</section>
